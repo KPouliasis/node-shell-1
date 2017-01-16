@@ -1,8 +1,20 @@
 
 var fs = require('fs');
+var rq = require('request')
+
 module.exports = {
 
 //pwd command
+//
+curl : function(file){
+	var url = 'http://www.'+file
+	rq(url, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log(body) // Show the HTML for the Google homepage.
+  }
+})
+},
+
 pwd: function(file){
 	process.stdout.write(process.cwd());
 	process.stdout.write('\nprompt > ');
